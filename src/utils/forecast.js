@@ -7,9 +7,11 @@ const forecast = (lan,long,callback) => {
         }if (body.error === 0 ) {
             callback('Unable to find location',undefined)
         } else {
+         console.log(body);
          const temperature = body.current.temperature
          const feelsLikeTemperature = body.current.feelslike
-            callback(undefined,'its ' + temperature + ' degrees outside and its feels like ' + feelsLikeTemperature)
+         const weatherDesc = body.current.weather_descriptions[0]
+            callback(undefined,'its '+ weatherDesc +' out side, the temperature is '+ temperature + ' degrees outside and its feels like ' + feelsLikeTemperature)
 
         }
     })
